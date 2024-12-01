@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Fun Vote Links</title>
+  <style>
+    /* General body styles */
+    body {
+      font-family: 'Press Start 2P', sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background: linear-gradient(135deg, #ff4444, #44ff44, #4488ff);
+      background-size: 400% 400%;
+      animation: gradientAnimation 6s infinite;
+      color: white;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 10px 0;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      border: 4px solid white;
+      border-radius: 12px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #ff4444;
+      border: 3px solid #ffffff;
+      border-radius: 8px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      box-shadow: 0 5px #cc3333;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff5555;
+      transform: translateY(-3px);
+      box-shadow: 0 8px #aa3333;
+    }
+
+    /* Tabs container */
+    #tabs-container {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .tab {
+      margin: 10px;
+    }
+
+    .tab a {
+      padding: 15px 30px;
+      text-decoration: none;
+      background-color: white;
+      border: 3px solid #4488ff;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #4488ff;
+      display: block;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s, color 0.3s;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .tab a:hover {
+      background-color: #4488ff;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 12px 24px;
+      }
+
+      .tab a {
+        font-size: 14px;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img src="https://minecraft-mp.com/images/favicon/336145.png?ts=1725711251" alt="Block Fun Logo">
+
+  <h1>Block Fun Vote Links</h1>
+  <button id="show-links-btn">Show Links</button>
+
+  <div id="tabs-container"></div>
+
+  <script>
+    // Get references to the button and container
+    const showLinksButton = document.getElementById('show-links-btn');
+    const tabsContainer = document.getElementById('tabs-container');
+
+    // Function to add tabs (vote links)
+    function addTabs() {
+      // Clear existing tabs to prevent duplicates
+      tabsContainer.innerHTML = '';
+
+      // Add new tabs
+      for (let i = 1; i <= 7; i++) {
+        const tab = document.createElement('div');
+        tab.classList.add('tab');
+        const link = document.createElement('a');
+        link.href = `https://bit.ly/BlockFunVote${i}`;
+        link.target = '_blank';
+        link.innerText = `Vote ${i}`;
+        tab.appendChild(link);
+        tabsContainer.appendChild(tab);
+      }
+    }
+
+    // Add event listener to the button
+    showLinksButton.addEventListener('click', addTabs);
+  </script>
+
+</body>
+</html>
